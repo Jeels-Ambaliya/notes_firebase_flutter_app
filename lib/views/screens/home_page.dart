@@ -34,7 +34,8 @@ class _Home_PageState extends State<Home_Page> {
 
     return Scaffold(
       // backgroundColor: const Color(0xfff9eeff),
-      backgroundColor: Colors.black,
+
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xfff9eeff),
         title: const Text(
@@ -78,78 +79,186 @@ class _Home_PageState extends State<Home_Page> {
                   data.docs;
 
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10),
                 child: ListView.builder(
                   itemCount: allDocs.length,
                   itemBuilder: (context, i) {
-                    return Card(
-                      child: ListTile(
-                        isThreeLine: true,
-                        leading: Text(
-                          allDocs[i].id,
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
+                    return
+                        //   Card(
+                        //   child: ListTile(
+                        //     isThreeLine: true,
+                        //     leading: Text(
+                        //       // allDocs[i].id,
+                        //       "${i + 1}",
+                        //       style: GoogleFonts.poppins(
+                        //         textStyle: const TextStyle(
+                        //           fontSize: 20,
+                        //           fontWeight: FontWeight.w600,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     title: Text(
+                        //       allDocs[i].data()['title'],
+                        //       style: GoogleFonts.poppins(
+                        //         textStyle: const TextStyle(
+                        //           fontSize: 20,
+                        //           fontWeight: FontWeight.w600,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     subtitle: Text(
+                        //       "${allDocs[i].data()['body']}",
+                        //       style: GoogleFonts.poppins(
+                        //         textStyle: const TextStyle(
+                        //           fontSize: 18,
+                        //           fontWeight: FontWeight.w400,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     trailing: Row(
+                        //       mainAxisSize: MainAxisSize.min,
+                        //       mainAxisAlignment: MainAxisAlignment.end,
+                        //       children: [
+                        //         IconButton(
+                        //           onPressed: () {
+                        //             Map<String, dynamic> updateData = {
+                        //               "title": allDocs[i].data()['title'],
+                        //               "body": allDocs[i].data()['body'],
+                        //             };
+                        //             validateUpdate(
+                        //                 id: allDocs[i].id, data: updateData);
+                        //           },
+                        //           icon: const Icon(
+                        //             Icons.edit_outlined,
+                        //             color: Colors.blue,
+                        //           ),
+                        //         ),
+                        //         IconButton(
+                        //           onPressed: () async {
+                        //             await FirestoreHelper.firestoreHelper
+                        //                 .deleteRecords(id: allDocs[i].id);
+                        //
+                        //             ScaffoldMessenger.of(context).showSnackBar(
+                        //               const SnackBar(
+                        //                 content:
+                        //                     Text("Record Deleted Successfully..."),
+                        //                 backgroundColor: Colors.redAccent,
+                        //                 behavior: SnackBarBehavior.floating,
+                        //               ),
+                        //             );
+                        //           },
+                        //           icon: const Icon(
+                        //             Icons.delete_outline,
+                        //             color: Colors.red,
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // );
+                        Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: GestureDetector(
+                        onTap: () async {
+                          Map<String, dynamic> updateData = {
+                            "title": allDocs[i].data()['title'],
+                            "body": allDocs[i].data()['body'],
+                          };
+                          validateUpdate(id: allDocs[i].id, data: updateData);
+                        },
+                        child: Container(
+                          height: 80,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1.5,
+                              color: Colors.deepPurple.shade300,
                             ),
-                          ),
-                        ),
-                        title: Text(
-                          allDocs[i].data()['title'],
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        subtitle: Text(
-                          "${allDocs[i].data()['body']}",
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                Map<String, dynamic> updateData = {
-                                  "title": allDocs[i].data()['title'],
-                                  "body": allDocs[i].data()['body'],
-                                };
-                                validateUpdate(
-                                    id: allDocs[i].id, data: updateData);
-                              },
-                              icon: const Icon(
-                                Icons.edit_outlined,
-                                color: Colors.blue,
+                            boxShadow: const [
+                              BoxShadow(
+                                spreadRadius: 3,
+                                blurRadius: 10,
+                                offset: Offset(3, 3),
+                                color: Color(0xfff9eeff),
                               ),
+                            ],
+                            color: Colors.white,
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30),
                             ),
-                            IconButton(
-                              onPressed: () async {
-                                await FirestoreHelper.firestoreHelper
-                                    .deleteRecords(id: allDocs[i].id);
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content:
-                                        Text("Record Deleted Successfully..."),
-                                    backgroundColor: Colors.redAccent,
-                                    behavior: SnackBarBehavior.floating,
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 15,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                    left: 20,
+                                    right: 15,
                                   ),
-                                );
-                              },
-                              icon: const Icon(
-                                Icons.delete_outline,
-                                color: Colors.red,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        allDocs[i].data()['title'],
+                                        style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        "${allDocs[i].data()['body']}",
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                flex: 4,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(30),
+                                    ),
+                                  ),
+                                  child: IconButton(
+                                    onPressed: () async {
+                                      await FirestoreHelper.firestoreHelper
+                                          .deleteRecords(id: allDocs[i].id);
+
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                              "Record Deleted Successfully..."),
+                                          backgroundColor: Colors.redAccent,
+                                          behavior: SnackBarBehavior.floating,
+                                        ),
+                                      );
+                                    },
+                                    icon: const Icon(
+                                      Icons.delete_outline,
+                                      color: Colors.red,
+                                      size: 28,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );
