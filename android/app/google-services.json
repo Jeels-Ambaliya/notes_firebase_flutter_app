@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "929855881601",
+    "project_id": "note-signin",
+    "storage_bucket": "note-signin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929855881601:android:91324b4d1ceba6876ce880",
+        "android_client_info": {
+          "package_name": "com.jeels21.createnote_signin_signup_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929855881601-bhucbu0cspt3ukkgskamdrho0tbc6prm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jeels21.createnote_signin_signup_firebase",
+            "certificate_hash": "9dff5a87583b0ae4a6997d037c1bd45f0d5a1783"
+          }
+        },
+        {
+          "client_id": "929855881601-anov19q2gur1ilq9ij3uviangusg0drl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKdezpa4ueM-pneVyPmuBqxkmxKDqF6Uw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929855881601-2bupeqnp1nso52jaqrru2tp50gfcfdhr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
