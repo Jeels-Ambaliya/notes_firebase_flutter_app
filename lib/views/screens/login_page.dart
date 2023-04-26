@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:createnote_signin_signup_firebase/helper/firebase_auth_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -156,8 +154,6 @@ class _Login_PageState extends State<Login_Page> {
 
                                 Navigator.of(context)
                                     .pushReplacementNamed('/', arguments: data);
-
-                                log("comes here...");
                               } else if (data['msg'] != null) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

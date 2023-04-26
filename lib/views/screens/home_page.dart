@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,8 +27,6 @@ class _Home_PageState extends State<Home_Page> {
   Widget build(BuildContext context) {
     Map<String, dynamic> data =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-
-    log("here it comes... $data");
 
     return Scaffold(
       // backgroundColor: const Color(0xfff9eeff),
@@ -235,17 +231,43 @@ class _Home_PageState extends State<Home_Page> {
                                     ),
                                   ),
                                   child: IconButton(
-                                    onPressed: () async {
-                                      await FirestoreHelper.firestoreHelper
-                                          .deleteRecords(id: allDocs[i].id);
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          title: const Text('Are you sure?'),
+                                          content: const Text(
+                                              'This action will permanently delete this data'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context, false),
+                                              child: const Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () async {
+                                                await FirestoreHelper
+                                                    .firestoreHelper
+                                                    .deleteRecords(
+                                                        id: allDocs[i].id);
 
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                          content: Text(
-                                              "Record Deleted Successfully..."),
-                                          backgroundColor: Colors.redAccent,
-                                          behavior: SnackBarBehavior.floating,
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  const SnackBar(
+                                                    content: Text(
+                                                        "Record Deleted Successfully..."),
+                                                    backgroundColor:
+                                                        Colors.redAccent,
+                                                    behavior: SnackBarBehavior
+                                                        .floating,
+                                                  ),
+                                                );
+
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text('Delete'),
+                                            ),
+                                          ],
                                         ),
                                       );
                                     },
